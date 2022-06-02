@@ -52,7 +52,7 @@ class RelatedService extends Component
         /** @var Element $elementType */
         $elementType = Craft::$app->elements->getElementTypeById($elementId);
 
-        $query = MatrixBlock::find();
+        $query = MatrixBlock::find()->site('*');
         $query->relatedTo = $element;
         $query->anyStatus();
         /** @var MatrixBlock[] $blocks */
@@ -67,21 +67,21 @@ class RelatedService extends Component
         }
 
         /** @var Query $query */
-        $query = Entry::find();
+        $query = Entry::find()->site('*');
         $query->relatedTo = $element;
         $query->anyStatus();
         /** @var Element[] $entries */
         $entries = $query->all();
 
         /** @var Query $query */
-        $query = Category::find();
+        $query = Category::find()->site('*');
         $query->relatedTo = $element;
         $query->anyStatus();
         /** @var Element[] $categories */
         $categories = $query->all();
 
         /** @var Query $query */
-        $query = User::find();
+        $query = User::find()->site('*');
         $query->relatedTo = $element;
         $query->anyStatus();
         /** @var Element[] $users */
